@@ -1,0 +1,11 @@
+futureman\articles\FileDoesNotExistException.class
+futureman\articles\Jeans.class
+futureman\articles\PathDoesNotExistException.class
+futureman\articles\Jacke.class
+futureman\articles\JasonDAOProvider.class
+futureman\dataAccessObjektInterface\ArticlesDAO.class
+futureman\articles\Artikel.class
+futureman\articles\Schuhe.class
+futureman\ort\Ort.class
+futureman\articles\Farbe.class
+futureman\articles\Kleidungstueck.class

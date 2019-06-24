@@ -1,0 +1,159 @@
+class Player{
+	
+	Precondition{
+		getName()
+			-> _name != null
+		getStone()
+			-> none
+		setStone()
+			-> none
+		equals(Player other)
+			-> other != null;
+		getField()
+			-> _field = _oldField // _field doesnt change
+		getStoneAt(int row, int column)
+			-> row >= 0
+			-> column >= 0
+			-> _field != null
+		getLastInsertedStonePos()
+			-> none
+		setLastInsertedStonePos(int[] coordinates)
+			-> coordinates != null
+		isPositionFree(int row, int column)
+			-> row >= 0
+			-> column >= 0
+			-> _field != null
+		isColumnFree(int column)
+			-> column >= 0
+			-> _field != null
+		insertStoneIntoColumn(char stone, int column)
+			-> column >= 0
+			-> stone != ''
+			-> isColumnFree() == true
+	}
+	
+	Postcondition{
+		getName()
+			-> _nameOld = _name; // _name unchanged
+		getStone()
+			-> _oldStone = _stone; //_stone unchanged
+		setStone(char stone)
+			-> _stone = stone // _stone changed when _stone != stone
+		euqals()
+			-> return true when names equal, else return false
+		getField()
+			-> none
+		getStoneAt(int row, int column)
+			-> _rows unchanged
+		getLastInsertedStonePos()
+			-> _lastInsertedStonePos unchanged
+		setLastInsertedStonePos(int[] coordinates)
+			-> _lastInsertedStonePos= coordinates;
+		isPositionFree(int row, int column)
+			-> _field unchanged
+		isColumnFree(int column)
+			-> _field unchanged
+		insertStoneIntoColumn(char stone, int column)
+			-> return coordinates of last inserted stone as int []
+			-> _field[x][column] is now occupied
+	}
+		
+	Invariant{
+		none
+	}
+}
+
+class PlayingField{
+
+	Precondition{
+		showSpielfeld(PrintStream out)
+			-> out != null
+		getRows()
+			-> none
+		getColumns()
+			-> none
+	}
+	
+	Postcondition{
+		showSpielfeld(PrintStream out)
+			-> none
+		getRows()
+			-> _rows = _oldRows // _rows doesnt change
+		getColumns()
+			-> _columns = _oldColumn // _columns doesnt change
+			
+			
+	}
+	
+	Invariant{
+	
+	
+	}
+}
+class VierGewinnt{
+
+	Precondition{
+		play()
+			-> none
+		enterValueForField(String message)
+			-> none	
+		eingabeInt(String text)
+			-> none
+		eingabeString(String text)
+			-> none
+		check4Winner(PlayingField field)
+			-> field != null
+		check4Winner_row(PlayingField field), 
+		check4Winner_column(PlayingField field),
+		check4Winner_straight1(PlayingField field),
+		check4Winner_straigt2(PlayingField field)
+			-> field != null	
+			-> field unchanged
+		get_player1()
+			-> none
+		get_player2()
+			-> none
+		get_currentPlayer() 
+			-> _player1 != null
+			-> _player2 != null
+	}
+
+	Postcondition{
+		play()
+			-> none
+		enterValueForField(String message)
+			-> typedInSize >= 4// for the field	
+		eingabeInt(String text)
+			-> return user input as int	
+		eingabeString(String text)
+			-> return user input as String	
+		check4Winner(PlayingField field)
+			-> none
+			-> field unchanged
+				check4Winner_row(PlayingField field), 
+		check4Winner_column(PlayingField field),
+		check4Winner_straight1(PlayingField field),
+		check4Winner_straigt2(PlayingField field)
+			-> field unchanged	
+		get_player1()
+			-> _player1 unchanged
+		get_player2()
+			-> _player2 unchanged
+		get_currentPlayer() 
+			-> _currentPlayer unchanged
+	}
+
+	Invariant{
+		when object is created && game running
+		-> _player 1 != null (before initialisation allowed)
+		-> _player 2 != null (before initialisation allowed)
+		-> _currentPlayer = _player1 | _currentPlayer = player2
+		-> _playingField != null (before initialisation allowed)
+	}
+
+
+
+
+}
+
+}

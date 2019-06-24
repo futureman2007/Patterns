@@ -1,0 +1,3 @@
+TransferObjects werden eingesetzt, wenn auf Daten über das Internet zugegriffen werden soll und dabei die Netzauslastung 
+möglichst reduziert werden soll.
+Dies wird erreicht, indem einzelne, zusammenhängende abfrageopperationen in eine große opperation zusammengefasst werden.

@@ -1,0 +1,86 @@
+
+class Clock: {
+	precondition{
+	
+	}
+	
+	postcondition{
+		tick() 
+			timeInSec = (seconds + minutes * 60 + hours * 3600) +1
+			0 <= timeInSec <=  ( (time_before_tick + 1) % 24 * 60 * 60 )
+			// make sure, clock starts by 0 after 23:59:59 + 1sec
+	}
+ 	
+	invariant{
+			-> _hour >= 0 && _hour < 24
+			-> _minute >= 0 && _minute < 60
+			-> _second >= 0 && _second < 60
+	}
+}
+
+class SettableClock{
+	precondition{
+		setTime()
+			-> hour >= 0 && hour < 24
+			-> minute >= 0 && minute < 60
+	}
+	
+	postcondition{
+		setTime()
+			-> _second < 60 && second  >= 0
+			-> _minute < 60 && minute >= 0
+			-> _hour < 24 && hour >= 0
+	}
+	
+	invariant{
+			-> _hour >= 0 && _hour < 24
+			-> _minute >= 0 && _minute < 60
+			-> _second >= 0 && _second < 60
+	}
+}
+
+class AlarmClock{
+	precondition{
+		setAlarmTime()
+			-> hour >= 0 && hour < 24
+			-> minute >= 0 && minute < 60
+			-> AlarmListener != null 	
+			
+	}
+	
+	postcondition{
+		setAlarmTime()
+			-> AlarmListener != null
+		
+		alarmOn()
+			-> _alarm = on
+			-> listener != null
+		
+		alarmOff()
+			-> _alarm = off	
+			-> listener == null
+	}
+	
+	invariant{
+		(_alarm = true && listener != null) 
+		_hour >= 0 && _hour < 24
+		_minute >= 0 && _minute < 60
+		_second >= 0 && _second < 60
+		
+	}
+}
+
+interface AlarmListener{
+
+	precondition{
+
+	}
+	
+	postcondition{
+
+	}
+	
+	invariant{
+
+	}
+}
